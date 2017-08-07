@@ -9,4 +9,9 @@ if __name__ == '__main__':
     secret = APIKEY['Secret']
     poloniex = Poloniex(apikey, secret)
     query_json = poloniex.api_query('returnTicker')
-    print json.dumps(query_json['USDT_BTC'], indent=4)
+    print 'ETH ' + json.dumps(query_json['USDT_ETH']['last'], indent=4)
+    print 'XRP ' + json.dumps(query_json['USDT_XRP']['last'], indent=4)
+    print 'BTC ' + json.dumps(query_json['USDT_BTC']['last'], indent=4)
+
+    my_balance = poloniex.returnMarketTradeHistory('USDT_ETH')
+    print json.dumps(my_balance, indent=4)
